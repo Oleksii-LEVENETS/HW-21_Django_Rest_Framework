@@ -13,16 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from blog.views import UserLogIn
+
 from django.contrib import admin
 from django.urls import include, path
+
+from rest_framework.authtoken.views import obtain_auth_token
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # Authentication
+    path("api-auth/", include("rest_framework.urls")),
+    path("login/", obtain_auth_token, name="obtain-auth-token"),
+    path("dj-rest-auth/", include("dj_rest_auth.urls")),
+    path("api-user-login/", UserLogIn.as_view()),
     # My app "blog":
     path("", include("blog.urls")),
-]
-
-urlpatterns += [
-    path("api-auth/", include("rest_framework.urls")),
 ]

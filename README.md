@@ -24,3 +24,33 @@
        https://django-allauth.readthedocs.io/en/latest/installation.html
 =============================
 
+![Screenshot 2023-03-18 at 22.00.12.png](static%2FScreenshot%202023-03-18%20at%2022.00.12.png)
+
+
+```bash
+python3 manage.py migrate
+```
+# Option_1
+```bash
+python3 manage.py createsuperuser  
+```
+```bash
+python3 manage.py create_users 5   
+```
+```bash
+python3 manage.py create_new_models  
+```
+
+or
+
+# Option_2
+```bash
+python3 manage.py loaddata blog/fixtures/user.json
+```
+```bash
+python3 manage.py loaddata blog/fixtures/fresh_db.json
+```
+
+```bash
+python3 manage.py runserver
+```
